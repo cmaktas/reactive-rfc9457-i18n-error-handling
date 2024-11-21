@@ -5,7 +5,7 @@ This project demonstrates how to implement a modern, standardized error handling
 ## Key Features
 
 - **Reactive Spring WebFlux**: A non-blocking, asynchronous web framework.
-- **RFC 9457-Compliant Error Responses**: Implements structured error fields like `type`, `title`, `status`, `detail`, and `instance`.
+- **RFC 9457-Compliant Error Responses**: Implements structured error fields like `type`, `title`, `status`, `detail`, and `instance`. You can access details about RFC 9457 from [here](https://www.rfc-editor.org/rfc/rfc9457.html).
 - **Internationalized Error Messages**: Supports multiple languages using resource bundles.
 - **Spring Validation**: Utilizes Spring's validation framework to automatically handle validation errors.
 - **Automated Error Responses**: Provides consistent and standardized error responses for validation and business exceptions.
