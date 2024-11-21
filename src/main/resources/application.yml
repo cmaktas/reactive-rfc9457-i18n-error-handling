@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: errorhandler
+  messages:
+    basename: messages
+    fallback-to-system-locale: false
+
+supported-locales: en, fr, ar, ru
