@@ -16,3 +16,14 @@ This project demonstrates how to implement a modern, standardized error handling
 - **OpenAPI Documentation with Swagger**: Provides comprehensive API documentation and testing capabilities via Swagger UI. You can access Swagger UI [here](http://localhost:8080/webjars/swagger-ui/index.html).
 - **Support for Multiple Locales**: Easily extendable to support additional languages.
 
+## Starting the Application
+You can start the application using Docker Compose. This will build the Docker image and run the container.
+```bash
+docker-compose up --build -d
+```
+## Accessing the Application
+Once the application is up and running, you can access the Swagger UI to test the API endpoints:
+
+> http://localhost:8080/webjars/swagger-ui/index.html
+
+The Swagger UI provides a user-friendly interface to interact with the API, view documentation, and send test requests.
