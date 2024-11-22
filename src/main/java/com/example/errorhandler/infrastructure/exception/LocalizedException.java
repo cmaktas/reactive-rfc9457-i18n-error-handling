@@ -56,6 +56,4 @@ public class LocalizedException extends RuntimeException {
         });
     }
 
-
-
 }

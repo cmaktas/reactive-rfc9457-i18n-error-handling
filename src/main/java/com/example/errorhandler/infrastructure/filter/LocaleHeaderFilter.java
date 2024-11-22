@@ -28,7 +28,7 @@ public class LocaleHeaderFilter implements WebFilter {
 
     /**
      * Filters each incoming HTTP request to resolve the user's locale based on the "Accept-Language" header.
-     * The resolved locale is stored in the exchange attributes under the key defined by
+     * The resolved locale is stored in the reactor context under the key defined by
      * {@link ContextConstants#ACCEPT_LANGUAGE_CONTEXT_KEY}.
      *
      * @param exchange the current server exchange
@@ -38,8 +38,10 @@ public class LocaleHeaderFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         return resolveLocale(exchange.getRequest().getHeaders().getFirst(HttpHeaders.ACCEPT_LANGUAGE))
-                .doOnNext(resolvedLocale -> exchange.getAttributes().put(ContextConstants.ACCEPT_LANGUAGE_CONTEXT_KEY, resolvedLocale))
-                .then(chain.filter(exchange));
+                .flatMap(resolvedLocale ->
+                        chain.filter(exchange)
+                                .contextWrite(ctx -> ctx.put(ContextConstants.ACCEPT_LANGUAGE_CONTEXT_KEY, resolvedLocale))
+                );
     }
 
     /**
