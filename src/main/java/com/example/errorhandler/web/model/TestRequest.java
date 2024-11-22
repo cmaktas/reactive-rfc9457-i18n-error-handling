@@ -4,8 +4,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,6 +21,11 @@ public class TestRequest {
     @NotBlank(message = "{validation.exception.not_blank}")
     @Schema(description = "A non-null and non-blank string", example = "example")
     private String fieldNotBlank;
+
+    @NotNull(message = "{validation.exception.not_null}")
+    @NotEmpty(message = "{validation.exception.not_empty}")
+    @Schema(description = "A non-null and non-empty collection", example = "[\"item1\", \"item2\"]")
+    private List<String> fieldNotEmpty;
 
     @NotNull(message = "{validation.exception.not_null}")
     @Email(message = "{validation.exception.email}")
@@ -55,6 +64,21 @@ public class TestRequest {
     private String fieldSize;
 
     @NotNull(message = "{validation.exception.not_null}")
+    @Length(min = 5, max = 15, message = "{validation.exception.length}")
+    @Schema(description = "A string with length between 5 and 15 characters", example = "exampleString")
+    private String fieldLength;
+
+    @NotNull(message = "{validation.exception.not_null}")
+    @Range(min = 1, max = 100, message = "{validation.exception.range}")
+    @Schema(description = "An integer within the range [1, 100]", example = "50")
+    private Integer fieldRangeValue;
+
+    @NotNull(message = "{validation.exception.not_null}")
+    @Size(min = 5, message = "{validation.exception.field_length}")
+    @Schema(description = "A string with a minimum length of 5 characters", example = "example")
+    private String fieldMinLength;
+
+    @NotNull(message = "{validation.exception.not_null}")
     @Pattern(regexp = "^[A-Za-z0-9]+$", message = "{validation.exception.pattern}")
     @Schema(description = "An alphanumeric string (letters and numbers only)", example = "abc123")
     private String fieldPattern;
@@ -88,4 +112,9 @@ public class TestRequest {
     @Pattern(regexp = "\\+?[0-9]{10,15}", message = "{validation.exception.phone_number}")
     @Schema(description = "A phone number with 10 to 15 digits, optionally starting with '+'", example = "+1234567890")
     private String fieldPhoneNumber;
+
+    @NotNull(message = "{validation.exception.not_null}")
+    @CreditCardNumber(message = "{validation.exception.credit_card}")
+    @Schema(description = "A valid credit card number", example = "4111111111111111")
+    private String fieldCreditCard;
 }
