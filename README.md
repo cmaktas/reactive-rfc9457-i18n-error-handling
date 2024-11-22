@@ -1,5 +1,7 @@
 # Reactive Error Handling with RFC 9457 and Internationalization (i18n)
+**Author:** Cem Aktas
 
+---
 This project demonstrates how to implement a modern, standardized error handling approach based on **RFC 9457** in a reactive Spring WebFlux application. It also showcases **internationalization (i18n)**, allowing error messages to be localized based on the `Accept-Language` HTTP header.
 
 ## Key Features
